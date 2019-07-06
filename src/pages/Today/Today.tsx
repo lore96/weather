@@ -6,7 +6,8 @@ import {connect} from 'react-redux'
 
 interface iProps {
     history: any,
-    requestWeather: Function
+    requestWeather: Function,
+    weather: Object
 }
   
 type TodayProps = iProps & RouteProps;
@@ -17,6 +18,12 @@ interface TodayState {
 class Today extends Component<TodayProps, TodayState> {
     constructor(props: TodayProps) {
         super(props);
+    }
+
+    componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
+        if(prevProps.Weather !== this.props.weather) {
+            console.log('PREVPROPS', prevProps.weather, 'NEWPROPS', this.props.weather);
+        }
     }
 
     componentDidMount() {
@@ -37,6 +44,7 @@ class Today extends Component<TodayProps, TodayState> {
 }
 
 const mapStateToProps = (state: any) => ({
+    weather: state.Weather
   });
   
   const mapDispatchToProps = (dispatch: any) => ({
