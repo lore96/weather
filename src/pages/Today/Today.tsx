@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TodayContainer, TodayTitle} from './Today.style';
+import {TodayContainer, TodayTitle, TodayWeatherContainer, EmptyMessage} from './Today.style';
 import {RouteProps} from 'react-router-dom';
 import MeteoCard from '../../components/MeteoCard/MeteoCard';
 import {connect} from 'react-redux'
@@ -58,12 +58,14 @@ class Today extends Component<TodayProps, TodayState> {
     render(){
         const weatherCardJSX = this.state.weather.length > 0 ? this.state.weather.map((item, index) => {
             return <MeteoCard key={index} city={item}/>
-        }) : <p>Empty state</p>;
+        }) : <EmptyMessage>No weather is selected</EmptyMessage>;
 
 
-        return this.state.isLoading ? <Spinner /> :  <TodayContainer>
+        return this.state.isLoading ? <Spinner /> : <TodayContainer>
             <TodayTitle>Weather of today</TodayTitle>
-            {weatherCardJSX}
+            <TodayWeatherContainer>
+                {weatherCardJSX}
+            </TodayWeatherContainer>
         </TodayContainer>
     }
 }
