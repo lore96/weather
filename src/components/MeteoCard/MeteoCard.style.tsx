@@ -65,9 +65,20 @@ export const StyledWeather = styled.h4`
 export const StyledIcon = styled.i`
     font-size: 100px;
     margin: 1rem;
-    color: #ffe833;
     @media (max-width: 768px) {
         font-size: 60px;
         margin: 0.5rem;
+    }
+
+    &.gray {
+        color: #efefef
+    }
+
+    &.yellow {
+        color: #ffe833;
+    }
+
+    &.white {
+        color: #ffffff;
     }
 `;

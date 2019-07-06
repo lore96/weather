@@ -3,6 +3,7 @@ import {TodayContainer} from './Today.style';
 import {RouteProps} from 'react-router-dom';
 import MeteoCard from '../../components/MeteoCard/MeteoCard';
 import {connect} from 'react-redux'
+import Spinner from '../../components/Spinner/Spinner';
 
 interface iProps {
     history: any,
@@ -20,7 +21,7 @@ interface TodayState {
     isLoading: boolean
 }
 
-const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}];
+const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}, {name: 'Florence', country: 'it-IT'}, {name: 'Sicily', country: 'it-IT'}];
 
 class Today extends Component<TodayProps, TodayState> {
     constructor(props: TodayProps) {
@@ -58,7 +59,7 @@ class Today extends Component<TodayProps, TodayState> {
         }) : <p>Empty state</p>;
 
 
-        return this.state.isLoading ? <p>loading</p>:  <TodayContainer>
+        return this.state.isLoading ? <Spinner />:  <TodayContainer>
             {weatherCardJSX}
         </TodayContainer>
     }
