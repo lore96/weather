@@ -62,23 +62,18 @@ export default class MeteoCard extends React.Component<MeteoCardProps, MeteoCard
         if(this.props.city && this.props.city.weather.length > 0) {
             switch(this.props.city.weather[0].main) {
                 case 'Mist':
-                    console.log('mist');
                     this.setState({icon: 'fas fa-cloud-sun', iconColor: 'white'});
                     break;
                 case 'Clouds':
-                    console.log('clouds');
                     this.setState({icon: 'fas fa-cloud', iconColor: 'gray'});
                     break;
                 case 'Rain':
-                    console.log('rain');
                     this.setState({icon: 'fas fa-cloud-showers-heavy', iconColor: 'gray'})
                     break;
                 case 'Sunny':
-                    console.log('sunny');
                     this.setState({icon: 'fas fa-sun', iconColor: 'yellow'});
                     break;
                 default:
-                    console.log('defalt');
                     this.setState({icon: 'fas fa-sun', iconColor: 'yellow'});
             }
 

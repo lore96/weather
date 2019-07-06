@@ -10,6 +10,7 @@ import Tomorrow from './pages/Tomorrow/Tomorrow';
 
 /* COMPONENT */
 import NavBar from './components/NavBar/NavBar';
+const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}];
 
 
 const App: React.FC = () => {
@@ -18,8 +19,8 @@ const App: React.FC = () => {
       <BrowserRouter>
         <NavBar />
         <Switch>
-          <Route path={Routes.today.path} component={Today} />
-          <Route path={Routes.tomorrow.path} component={Tomorrow} />
+          <Route path={Routes.today.path} component={(props: any) => <Today {...props} cities={citiesList}/>} />
+          <Route path={Routes.tomorrow.path} component={(props: any) => <Tomorrow {...props} cities={citiesList}/>}  />
         </Switch>
       </BrowserRouter>
     </React.Fragment>

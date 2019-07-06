@@ -29,7 +29,5 @@ function* requestWeather(action: {
 
 
 export function* watchForWeatherRequest() {
-    const test = yield takeLatest('REQUEST_TODAY_WEATHER', requestWeather);
-
-    console.log(test);
+    yield takeLatest('REQUEST_TODAY_WEATHER', requestWeather);
 }

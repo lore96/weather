@@ -11,7 +11,11 @@ interface iProps {
     weather: {
         isLoading: boolean,
         weather?: any
-    } 
+    },
+    cities: Array<{
+        name: string,
+        country: string
+    }>
 }
   
 type TodayProps = iProps & RouteProps;
@@ -21,7 +25,6 @@ interface TodayState {
     isLoading: boolean
 }
 
-const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}, {name: 'Florence', country: 'it-IT'}, {name: 'Sicily', country: 'it-IT'}];
 
 class Today extends Component<TodayProps, TodayState> {
     constructor(props: TodayProps) {
@@ -34,7 +37,6 @@ class Today extends Component<TodayProps, TodayState> {
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-        console.log('PREVPROPS', prevProps.weather, 'NEWPROPS', this.props.weather);
 
         if(prevProps.weather !== this.props.weather) {
             this.setState({
@@ -50,7 +52,7 @@ class Today extends Component<TodayProps, TodayState> {
     }
 
     componentDidMount() {
-        this.props.requestWeather(citiesList);
+        this.props.requestWeather(this.props.cities);
     }
 
     render(){
