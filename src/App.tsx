@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 /* UTILS */
 import {Routes} from './routes';
@@ -11,6 +11,7 @@ import Error from './pages/Error/Error';
 
 /* COMPONENT */
 import NavBar from './components/NavBar/NavBar';
+
 const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}];
 
 
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <Route path={Routes.today.path} component={(props: any) => <Today {...props} cities={citiesList}/>} />
           <Route path={Routes.tomorrow.path} component={(props: any) => <Tomorrow {...props} cities={citiesList}/>}  />
           <Route path={Routes.error.path} component={Error} />}  />
+          <Redirect from="/" to={Routes.today.path} /> {/* set redirect to / from /today */}
         </Switch>
       </BrowserRouter>
     </React.Fragment>
