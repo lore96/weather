@@ -20,8 +20,9 @@ interface iProps {
         weather: Array<{
             description: string,
             main: string
-        }>
-    }
+        }>,
+    }, 
+    date: Date
 }
   
 type MeteoCardProps = iProps;
@@ -50,7 +51,7 @@ export default class MeteoCard extends React.Component<MeteoCardProps, MeteoCard
         this.state = {
             place: this.props.city ? this.props.city.name : '',
             temperature: this.props.city ? Math.round(parseInt(this.props.city.main.temp, 10)).toString() : '',
-            date: new Date(),
+            date: this.props.date,
             weather: this.props.city && this.props.city.weather.length > 0 ? this.props.city.weather :[],
             icon: 'gray',
             iconColor: 'gray'

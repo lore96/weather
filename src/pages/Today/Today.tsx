@@ -57,7 +57,7 @@ class Today extends Component<TodayProps, TodayState> {
 
     render(){
         const weatherCardJSX = this.state.weather.length > 0 ? this.state.weather.map((item, index) => {
-            return <MeteoCard key={index} city={item}/>
+            return <MeteoCard key={index} city={item} date={new Date()}/>
         }) : <EmptyMessage>No weather is selected</EmptyMessage>;
 
 

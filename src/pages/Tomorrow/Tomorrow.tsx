@@ -4,10 +4,11 @@ import {RouteProps} from 'react-router-dom';
 import MeteoCard from '../../components/MeteoCard/MeteoCard';
 import {connect} from 'react-redux'
 import Spinner from '../../components/Spinner/Spinner';
+import {addDays} from 'date-fns';
 
 interface iProps {
     history: any,
-    requestWeather: Function,
+    requestTomorrowWeather: Function,
     weather: {
         isLoading: boolean,
         weather?: any
@@ -52,12 +53,12 @@ class Tomorrow extends Component<TomorrowProps, TomorrowState> {
     }
 
     componentDidMount() {
-        this.props.requestWeather(this.props.cities);
+        this.props.requestTomorrowWeather(this.props.cities);
     }
 
     render(){
         const weatherCardJSX = this.state.weather.length > 0 ? this.state.weather.map((item, index) => {
-            return <MeteoCard key={index} city={item}/>
+            return <MeteoCard key={index} city={item} date={addDays(new Date(), 1)}/>
         }) : <EmptyMessage>No weather forecast selected</EmptyMessage>;
 
 
@@ -75,7 +76,7 @@ const mapStateToProps = (state: any) => ({
   });
   
   const mapDispatchToProps = (dispatch: any) => ({
-      requestWeather: (city: Array<{name: string, country: string}>) => {
+      requestTomorrowWeather: (city: Array<{name: string, country: string}>) => {
           dispatch({ type: 'REQUEST_TOMORROW_WEATHER', city})
       }
   });   
