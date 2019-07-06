@@ -5,6 +5,7 @@ export const RECEIVED_WEATHER = 'RECEIVED_WEATHER'
 export const RECEIVED_FORECAST = 'RECEIVED_FORECAST';
 
 export const WEATHER_RECEIVED_ERROR = 'WEATHER_RECEIVED_ERROR';
+export const FORECAST_RECEIVED_ERROR = 'FORECAST_RECEIVED_ERROR';
 
 export function weatherReceived (newWeather: any) {
     return {
@@ -16,6 +17,13 @@ export function weatherReceived (newWeather: any) {
 export function weatherReceivedError (error: any) {
     return {
         type: WEATHER_RECEIVED_ERROR,
+        error
+    }
+};
+
+export function forecastReceivedError (error: any) {
+    return {
+        type: FORECAST_RECEIVED_ERROR,
         error
     }
 };

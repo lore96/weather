@@ -11,7 +11,8 @@ interface iProps {
     requestTomorrowWeather: Function,
     weather: {
         isLoading: boolean,
-        weather?: any
+        weather?: any,
+        error?: any
     },
     cities: Array<{
         name: string,
@@ -38,11 +39,12 @@ class Tomorrow extends Component<TomorrowProps, TomorrowState> {
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-
-        if(prevProps.weather !== this.props.weather) {
+        if(prevProps.weather !== this.props.weather && !this.props.weather.error) {
             this.setState({
                 weather: this.props.weather.weather ? this.props.weather.weather : []
             });
+        } else if(!!this.props.weather.error && !this.props.weather.isLoading) {
+            this.props.history.push('/error');
         }
 
         if(prevProps.weather.isLoading !== this.props.weather.isLoading) {

@@ -14,7 +14,7 @@ export default class Error extends Component<ErrorProps> {
 
     render() {
         return <ErrorContainer>
-            <StyledMessage>Oops, something went wronk</StyledMessage>
+            <StyledMessage>Oops, something went wrong</StyledMessage>
             <StyledLink to="/today">Back to today weather</StyledLink>
         </ErrorContainer>
     }

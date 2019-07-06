@@ -38,11 +38,12 @@ class Today extends Component<TodayProps, TodayState> {
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
+        console.log(this.props);
         if(prevProps.weather !== this.props.weather && !this.props.weather.error) {
             this.setState({
                 weather: this.props.weather.weather ? this.props.weather.weather : []
             });
-        } else if(typeof this.props.weather.error !== 'undefined') {
+        } else if(!!this.props.weather.error && !this.props.weather.isLoading) {
             this.props.history.push('/error');
         }
 
