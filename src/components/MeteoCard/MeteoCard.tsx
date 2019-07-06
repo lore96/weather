@@ -9,7 +9,6 @@ import { MeteoCardContainer,
     StyledTemperature, 
     StyledWeather,
     StyledIcon} from './MeteoCard.style';
-import { tsThisType } from '@babel/types';
 
 interface iProps {
     city?: {
