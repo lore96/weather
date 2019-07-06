@@ -14,3 +14,9 @@ export const TodayContainer = styled.div`
         flex-wrap: wrap;
     }
 `;
+
+export const TodayTitle = styled.p`
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+`;

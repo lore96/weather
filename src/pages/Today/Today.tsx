@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {TodayContainer} from './Today.style';
+import {TodayContainer, TodayTitle} from './Today.style';
 import {RouteProps} from 'react-router-dom';
 import MeteoCard from '../../components/MeteoCard/MeteoCard';
 import {connect} from 'react-redux'
@@ -61,7 +61,8 @@ class Today extends Component<TodayProps, TodayState> {
         }) : <p>Empty state</p>;
 
 
-        return this.state.isLoading ? <Spinner />:  <TodayContainer>
+        return this.state.isLoading ? <Spinner /> :  <TodayContainer>
+            <TodayTitle>Weather of today</TodayTitle>
             {weatherCardJSX}
         </TodayContainer>
     }
