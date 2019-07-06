@@ -1,6 +1,5 @@
 import React from 'react';
 import {NavBarContainer, StyledLink, StyledRouteName} from './NavBar.style';
-import {Link} from 'react-router-dom';
 import {Routes} from '../../routes';
 
 export default class NavBar extends React.PureComponent {

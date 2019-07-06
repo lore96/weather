@@ -41,7 +41,7 @@ const mapStateToProps = (state: any) => ({
   
   const mapDispatchToProps = (dispatch: any) => ({
       requestWeather: (city: {name: string, country: string}) => {
-          dispatch({ type: 'REQUEST_WEATHER', city})
+          dispatch({ type: 'REQUEST_TODAY_WEATHER', city})
       }
   });   
   
