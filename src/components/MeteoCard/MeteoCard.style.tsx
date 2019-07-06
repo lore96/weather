@@ -20,12 +20,14 @@ export const PlaceContainer = styled.div`
     align-items: center;
     justify-content: center;
 `; 
+
 export const DateContainer = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
 `; 
+
 export const TemperatureContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -33,6 +35,7 @@ export const TemperatureContainer = styled.div`
     align-items: center;
     justify-content: center;
 `; 
+
 export const WeatherContainer = styled.div`
     display: flex;
     width: 100%;
@@ -44,11 +47,13 @@ export const StyledPlace = styled.h3`
     margin: 0;
     margin-top: 1em;
 `;
+
 export const StyledDate = styled.p`
     margin: 0;
     margin-top: 1em;
 
 `;
+
 export const StyledTemperature = styled.p`
     font-size: 100px;
     margin: 0;
@@ -59,10 +64,12 @@ export const StyledTemperature = styled.p`
         margin: 0.5rem;
     }
 `;
+
 export const StyledWeather = styled.h4`
     margin: 0;
     margin-bottom: 1em;
 `;
+
 export const StyledIcon = styled.i`
     font-size: 100px;
     margin: 1rem;

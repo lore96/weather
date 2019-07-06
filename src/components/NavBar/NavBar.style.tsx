@@ -14,6 +14,10 @@ export const StyledRouteName = styled.h2`
     color: white;
     text-decoration: none
     width: 100%;
+
+    &.active {
+        color: #f9a825
+    }
 `;
 
 export const StyledLink = styled(Link)`
