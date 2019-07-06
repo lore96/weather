@@ -10,6 +10,7 @@ export const MeteoCard = styled.div`
         max-width: 50%;
     }
     color: white;
+    background-color: 	#ffb640	
 `;
 
 export const PlaceContainer = styled.div`
@@ -64,7 +65,7 @@ export const StyledWeather = styled.h4`
 export const StyledIcon = styled.i`
     font-size: 100px;
     margin: 1rem;
-
+    color: #ffe833;
     @media (max-width: 768px) {
         font-size: 60px;
         margin: 0.5rem;
