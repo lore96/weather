@@ -10,7 +10,8 @@ interface iProps {
     requestWeather: Function,
     weather: {
         isLoading: boolean,
-        weather?: any
+        weather?: any,
+        error?: any
     },
     cities: Array<{
         name: string,
@@ -37,11 +38,12 @@ class Today extends Component<TodayProps, TodayState> {
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-
-        if(prevProps.weather !== this.props.weather) {
+        if(prevProps.weather !== this.props.weather && !this.props.weather.error) {
             this.setState({
                 weather: this.props.weather.weather ? this.props.weather.weather : []
             });
+        } else if(typeof this.props.weather.error !== 'undefined') {
+            this.props.history.push('/error');
         }
 
         if(prevProps.weather.isLoading !== this.props.weather.isLoading) {

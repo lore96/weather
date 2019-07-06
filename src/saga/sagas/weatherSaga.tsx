@@ -1,5 +1,5 @@
 import {takeLatest, put, all} from 'redux-saga/effects';
-import {weatherReceived, forecastReceived} from '../../model/actions';
+import {weatherReceived, forecastReceived, weatherReceivedError} from '../../model/actions';
 
 const endpointWeather = 'https://api.openweathermap.org/data/2.5/weather?';
 
@@ -20,14 +20,29 @@ function* requestWeather(action: {
 
     citiesPromise = action.city.map((item, index) => {
         const queryParams = `q=${item.name},${item.country}&appid=${apikey}&units=metric`;
-        return fetch(endpointWeather + queryParams).then(r => r.json());
+        return fetch(endpointWeather + queryParams).then(r => { 
+            return r.json();
+        }).catch(e => {console.log(e)});
     });
 
     const citiesWeatherResult = yield all(citiesPromise);
 
+    let hasError = false;
+
+    for(let i in citiesWeatherResult) {
+        if(citiesWeatherResult[i].cod !== 'undefined' 
+            && citiesWeatherResult[i].cod !== 200 ) {
+            hasError = citiesWeatherResult[i];
+        }
+    }
+    
     console.log(['SAGA', 'WEATHER_SAGA', 'REQUEST_TODAY_WEATHER', 'RESPONSE', citiesWeatherResult]);
 
-    yield put(weatherReceived(citiesWeatherResult));
+    if(hasError) {
+        yield put(weatherReceivedError(hasError));
+    } else {
+        yield put(weatherReceived(citiesWeatherResult));
+    }
 };
 
 function* requestTomorrowWeather(action: {

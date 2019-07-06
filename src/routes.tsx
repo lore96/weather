@@ -4,5 +4,8 @@ export const Routes = {
     },
     tomorrow: {
         path: '/tomorrow'
+    },
+    error: {
+        path: '/error'
     }
 };
