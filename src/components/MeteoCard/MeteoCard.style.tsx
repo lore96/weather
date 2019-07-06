@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MeteoCardContainer = styled.div`
     width: 95%;
     border-radius: 10px;
-    background-color: blue;
 
     margin: 2%;
     @media (min-width: 768px) {

@@ -20,7 +20,7 @@ const App: React.FC = () => {
         <NavBar />
         <Switch>
           <Route path={Routes.today.path} component={(props: any) => <Today {...props} cities={citiesList}/>} />
-          <Route path={Routes.tomorrow.path} component={(props: any) => <Tomorrow {...props} cities={[]}/>}  />
+          <Route path={Routes.tomorrow.path} component={(props: any) => <Tomorrow {...props} cities={citiesList}/>}  />
         </Switch>
       </BrowserRouter>
     </React.Fragment>

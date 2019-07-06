@@ -18,16 +18,16 @@ interface iProps {
     }>
 }
   
-type TodayProps = iProps & RouteProps;
+type TomorrowProps = iProps & RouteProps;
 
-interface TodayState {
+interface TomorrowState {
     weather: Array<any>,
     isLoading: boolean
 }
 
 
-class Today extends Component<TodayProps, TodayState> {
-    constructor(props: TodayProps) {
+class Tomorrow extends Component<TomorrowProps, TomorrowState> {
+    constructor(props: TomorrowProps) {
         super(props);
 
         this.state = {
@@ -76,8 +76,8 @@ const mapStateToProps = (state: any) => ({
   
   const mapDispatchToProps = (dispatch: any) => ({
       requestWeather: (city: Array<{name: string, country: string}>) => {
-          dispatch({ type: 'REQUEST_TODAY_WEATHER', city})
+          dispatch({ type: 'REQUEST_TOMORROW_WEATHER', city})
       }
   });   
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Today);
+  export default connect(mapStateToProps, mapDispatchToProps)(Tomorrow);
