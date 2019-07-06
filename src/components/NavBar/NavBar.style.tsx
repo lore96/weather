@@ -10,7 +10,7 @@ export const NavBarContainer = styled.div`
     justify-content: center;
 `;
 
-export const StyledRouteName = styled.p `
+export const StyledRouteName = styled.h2`
     color: white;
     text-decoration: none
     width: 100%;
