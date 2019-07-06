@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {TomorrowContainer} from './Tomorrow.style';
 import {RouteProps} from 'react-router-dom';
 
+import MeteoCard from '../../components/MeteoCard/MeteoCard';
+
+
 interface iProps {
     history: any,
   }
@@ -18,7 +21,8 @@ export default class Home<TomorrowProps, TomorrowState> extends Component {
 
     render(){
         return <TomorrowContainer>
-                
+                <MeteoCard />
+                <MeteoCard />
         </TomorrowContainer>
     }
 }

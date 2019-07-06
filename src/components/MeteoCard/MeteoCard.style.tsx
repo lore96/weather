@@ -51,6 +51,11 @@ export const StyledTemperature = styled.p`
     font-size: 100px;
     margin: 0;
     margin: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 60px;
+        margin: 0.5rem;
+    }
 `;
 export const StyledWeather = styled.p`
     margin: 0;
@@ -59,4 +64,9 @@ export const StyledWeather = styled.p`
 export const StyledIcon = styled.i`
     font-size: 100px;
     margin: 1rem;
+
+    @media (max-width: 768px) {
+        font-size: 60px;
+        margin: 0.5rem;
+    }
 `;

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {TodayContainer} from './Today.style';
 import {RouteProps} from 'react-router-dom';
 
-import MeteoWidget from '../../components/MeteoCard/MeteoCard';
+import MeteoCard from '../../components/MeteoCard/MeteoCard';
 
 interface iProps {
     history: any,
@@ -28,8 +28,8 @@ export default class Today<TodayProps, TodayState> extends Component {
 
     render(){
         return <TodayContainer>
-                <MeteoWidget />
-                <MeteoWidget />
+                <MeteoCard />
+                <MeteoCard />
         </TodayContainer>
     }
 }
