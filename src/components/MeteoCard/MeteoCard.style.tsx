@@ -38,7 +38,7 @@ export const WeatherContainer = styled.div`
     justify-content: center;
 `;
 
-export const StyledPlace = styled.p`
+export const StyledPlace = styled.h3`
     margin: 0;
     margin-top: 1em;
 `;
@@ -57,7 +57,7 @@ export const StyledTemperature = styled.p`
         margin: 0.5rem;
     }
 `;
-export const StyledWeather = styled.p`
+export const StyledWeather = styled.h4`
     margin: 0;
     margin-bottom: 1em;
 `;
