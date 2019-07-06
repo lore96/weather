@@ -12,6 +12,7 @@ export const MeteoCardContainer = styled.div`
 
     color: white;
     background-color: #f9a825;
+    box-shadow: 5px 5px #AAAAAA;
 `;
 
 export const PlaceContainer = styled.div`
