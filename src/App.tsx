@@ -10,7 +10,7 @@ import Tomorrow from './pages/Tomorrow/Tomorrow';
 
 /* COMPONENT */
 import NavBar from './components/NavBar/NavBar';
-const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}];
+const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}, {name: 'Berlin', country: 'de-DE'}, {name: 'Berlin', country: 'de-DE'}];
 
 
 const App: React.FC = () => {

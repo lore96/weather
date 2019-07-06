@@ -19,6 +19,8 @@ export const TomorrowWeatherContainer = styled.div`
     
     @media (max-width: 768px) {
         flex-direction: column;
+    }
+    @media (min-width: 768px) {
         flex-wrap: wrap;
     }
 `;
@@ -27,9 +29,12 @@ export const TomorrowTitle = styled.p`
     color: white;
     font-weight: bold;
     font-size: 30px;
+    text-align: center;
 `;
 
 export const EmptyMessage = styled.p`
     color: white;
     font-size: 20px;
+    text-align: center;
+
 `;

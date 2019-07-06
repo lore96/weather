@@ -5,9 +5,11 @@ export const MeteoCardContainer = styled.div`
     border-radius: 10px;
 
     margin: 2%;
+
     @media (min-width: 768px) {
-        max-width: 50%;
+        max-width: 45%;
     }
+
     color: white;
     background-color: #f9a825;
 `;
