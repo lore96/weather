@@ -3,11 +3,11 @@ export default function Weather(state = {}, action: {type: string, newWeather: O
         case 'GET_TODAY_WEATHER_REQUEST':
             console.log(['REDUX', 'GET_TODAY_WEATHER_REQUEST', action ]);
 
-            return {...state, loading: true}
+            return {...state, isLoading: true}
         case 'RECEIVED_WEATHER':
             console.log(['REDUX', 'RECEIVED_WEATHER', action ]);
 
-            return {...state, weather: action.newWeather, loading: false}
+            return {...state, weather: action.newWeather, isLoading: false}
         default:
             return state;
     }

@@ -7,38 +7,59 @@ import {connect} from 'react-redux'
 interface iProps {
     history: any,
     requestWeather: Function,
-    weather: Object
+    weather: {
+        isLoading: boolean,
+        weather?: any
+    } 
 }
   
 type TodayProps = iProps & RouteProps;
 
 interface TodayState {
+    weather: Array<any>,
+    isLoading: boolean
 }
+
+const citiesList = [{name: 'Milan', country: 'it-It'}, {name: 'Berlin', country: 'de-DE'}];
 
 class Today extends Component<TodayProps, TodayState> {
     constructor(props: TodayProps) {
         super(props);
+
+        this.state = {
+            weather: [],
+            isLoading: false
+        }
     }
 
     componentDidUpdate(prevProps: any, prevState: any, snapshot: any) {
-        if(prevProps.Weather !== this.props.weather) {
-            console.log('PREVPROPS', prevProps.weather, 'NEWPROPS', this.props.weather);
+        console.log('PREVPROPS', prevProps.weather, 'NEWPROPS', this.props.weather);
+
+        if(prevProps.weather !== this.props.weather) {
+            this.setState({
+                weather: this.props.weather.weather ? this.props.weather.weather : []
+            });
+        }
+
+        if(prevProps.weather.isLoading !== this.props.weather.isLoading) {
+            this.setState({
+                isLoading: this.props.weather.isLoading
+            });
         }
     }
 
     componentDidMount() {
-        // window.fetch('https://api.openweathermap.org/data/2.5/weather?q=FLORENCE,it&APPID=c164c4f116a450a01bbd21524e76502e')
-        //     .then(r => r.json())
-        //     .then((r) => {
-        //         console.log(r);
-        // });
-        this.props.requestWeather({name: 'Florence', country: 'it-It'});
+        this.props.requestWeather(citiesList);
     }
 
     render(){
-        return <TodayContainer>
-                <MeteoCard />
-                <MeteoCard />
+        const weatherCardJSX = this.state.weather.length > 0 ? this.state.weather.map((item, index) => {
+            return <MeteoCard key={index} city={item}/>
+        }) : <p>Empty state</p>;
+
+
+        return this.state.isLoading ? <p>loading</p>:  <TodayContainer>
+            {weatherCardJSX}
         </TodayContainer>
     }
 }
@@ -48,7 +69,7 @@ const mapStateToProps = (state: any) => ({
   });
   
   const mapDispatchToProps = (dispatch: any) => ({
-      requestWeather: (city: {name: string, country: string}) => {
+      requestWeather: (city: Array<{name: string, country: string}>) => {
           dispatch({ type: 'REQUEST_TODAY_WEATHER', city})
       }
   });   

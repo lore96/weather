@@ -1,4 +1,4 @@
-import {takeLatest, put} from 'redux-saga/effects';
+import {takeLatest, put, all} from 'redux-saga/effects';
 import {weatherReceived} from '../../model/actions';
 
 const endpoint = 'https://api.openweathermap.org/data/2.5/weather?';
@@ -6,19 +6,25 @@ const apikey = 'c164c4f116a450a01bbd21524e76502e';
 
 function* requestWeather(action: {
     type: string,
-    city: {
+    city: Array<{
         name: string,
         country: string
-    }}) {
-    console.log(['SAGA', 'WEATHER_SAGA', 'REQUEST_TODAY_WEATHER', action]);
-    const queryParams = `q=${action.city.name},${action.city.country}&appid=${apikey}`;
+    }>}) {
+    let citiesPromise: any = [];
 
+    console.log(['SAGA', 'WEATHER_SAGA', 'REQUEST_TODAY_WEATHER', action]);
     yield put({type: 'GET_TODAY_WEATHER_REQUEST'});
 
-    const jsonResp = yield fetch(endpoint + queryParams).then(r => r.json());
-    console.log(['SAGA', 'WEATHER_SAGA', 'REQUEST_TODAY_WEATHER', 'RESPOSE', jsonResp]);
+    citiesPromise = action.city.map((item, index) => {
+        const queryParams = `q=${item.name},${item.country}&appid=${apikey}&units=metric`;
+        return fetch(endpoint + queryParams).then(r => r.json());
+    });
 
-    yield put(weatherReceived(jsonResp));
+    const citiesWeatherResult = yield all(citiesPromise);
+
+    console.log(['SAGA', 'WEATHER_SAGA', 'REQUEST_TODAY_WEATHER', 'RESPONSE', citiesWeatherResult]);
+
+    yield put(weatherReceived(citiesWeatherResult));
 };
 
 

@@ -9,8 +9,6 @@ export function weatherReceived (newWeather: any) {
 };
 
 export function getTodayWeather (newWeather: any) {
-    console.log('newWeather', newWeather);
-    
     return {
         type: GET_TODAY_WEATHER_REQUEST,
         newWeather

@@ -1,5 +1,5 @@
 import React from 'react';
-import { MeteoCard, 
+import { MeteoCardContainer, 
     PlaceContainer, 
     DateContainer, 
     TemperatureContainer, 
@@ -11,12 +11,17 @@ import { MeteoCard,
     StyledIcon} from './MeteoCard.style';
 
 interface iProps {
-    weather?: string
+    city?: {
+        name: string,
+        main: {
+            temp: string
+        }
+    }
 }
   
-type MeteoWidgetProps = iProps;
+type MeteoCardProps = iProps;
 
-interface MeteoWidgetState {
+interface MeteoCardState {
     place: string,
     temperature: string,
     date: Date,
@@ -26,25 +31,29 @@ interface MeteoWidgetState {
 const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
  
 
-export default class MeteoWidget extends React.Component<MeteoWidgetProps, MeteoWidgetState> {
-    constructor(props: MeteoWidgetProps) {
+export default class MeteoCard extends React.Component<MeteoCardProps, MeteoCardState> {
+    constructor(props: MeteoCardProps) {
         super(props);
 
 
         this.state = {
-            place: 'Florence',
-            temperature: '32',
+            place: this.props.city ? this.props.city.name : '',
+            temperature: this.props.city ? Math.round(parseInt(this.props.city.main.temp, 10)).toString() : '',
             date: new Date(),
             weather: 'Sunny'
         }
     }
 
+    componentDidMount() {
+        console.log(this.props.city);
+    }
+
     render(){
-        return  <MeteoCard>
+        return  <MeteoCardContainer>
             <PlaceContainer><StyledPlace>{this.state.place}</StyledPlace></PlaceContainer>
             <DateContainer><StyledDate>{this.state.date.toLocaleDateString('it-IT', dateOptions)}</StyledDate></DateContainer>
             <TemperatureContainer><StyledIcon className="fas fa-sun" /><StyledTemperature>{this.state.temperature}°</StyledTemperature></TemperatureContainer>
             <WeatherContainer><StyledWeather>{this.state.weather}</StyledWeather></WeatherContainer>
-        </MeteoCard>
+        </MeteoCardContainer>
     }
 }

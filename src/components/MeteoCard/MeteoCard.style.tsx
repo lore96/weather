@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MeteoCard = styled.div`
+export const MeteoCardContainer = styled.div`
     width: 95%;
     border-radius: 10px;
     background-color: blue;
@@ -10,7 +10,7 @@ export const MeteoCard = styled.div`
         max-width: 50%;
     }
     color: white;
-    background-color: 	#ffb640	
+    background-color: #f9a825;
 `;
 
 export const PlaceContainer = styled.div`
